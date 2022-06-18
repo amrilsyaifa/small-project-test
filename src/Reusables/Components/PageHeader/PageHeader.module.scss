@@ -1,0 +1,44 @@
+@import 'src/Reusables/Styles/Variables';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.wrapper-right-text {
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  color: $grey;
+  margin-top: 10px;
+  .wrapper-text {
+    width: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .text {
+      cursor: pointer;
+    }
+  }
+}
+
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 70px;
+  img {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+  }
+  .search {
+    margin-top: 15px;
+    margin-left: 30px;
+  }
+}

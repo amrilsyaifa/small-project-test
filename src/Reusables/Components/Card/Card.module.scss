@@ -6,20 +6,41 @@
   align-items: center;
   width: 70px;
   justify-content: space-around;
+  width: 100%;
   .edit-icon {
-    font-size: 22px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     cursor: pointer;
     color: $blue;
+    div {
+      padding-left: 10px;
+    }
   }
   .remove-icon {
-    font-size: 22px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     cursor: pointer;
     color: $red;
+    div {
+      padding-left: 10px;
+    }
   }
 }
 
 .container {
   .card {
+    width: 250px;
+    min-height: 300px;
+    position: relative;
+    .wrapper-button {
+      position: absolute;
+      width: 250px;
+      bottom: 10px;
+      display: flex;
+      flex-direction: row-reverse;
+    }
     :global {
       .ant-card-head-title {
         text-transform: capitalize;

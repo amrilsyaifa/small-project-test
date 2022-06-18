@@ -11,13 +11,13 @@ import {
   REGISTER
 } from 'redux-persist';
 import createSagaMiddleware from 'redux-saga';
-import rootReducer from './Reducers/RootReducer';
+import rootReducer from './Reducers/RootReducers';
 import RootSagas from './Redux-Saga/Root.Sagas';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['checkout']
+  whitelist: ['header']
 };
 
 export const persistedReducer = persistReducer(persistConfig, rootReducer);

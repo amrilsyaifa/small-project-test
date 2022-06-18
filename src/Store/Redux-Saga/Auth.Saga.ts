@@ -1,9 +1,9 @@
 import { call, takeEvery, put } from 'redux-saga/effects';
 import Api from 'src/Reusables/Services/Api.Services';
-import { fetchData } from '../Reducers/Auth.Reducers';
-import { sagaActions } from 'src/Reusables/Actions/SagaActions';
+import { fetchData } from '../Reducers/Auth.Reducer';
+import { authActionsSaga } from 'src/Reusables/Actions/SagaActions';
 
-export function* fetchDataSaga() {
+export function* fetchAuthDataSaga() {
   try {
     const result = yield call(() => Api.get('/auth'));
     yield put(fetchData(result.data));
@@ -13,5 +13,5 @@ export function* fetchDataSaga() {
 }
 
 export default function* authSaga() {
-  yield takeEvery(sagaActions.FETCH_DATA_SAGA, fetchDataSaga);
+  yield takeEvery(authActionsSaga.FETCH_DATA_AUTH, fetchAuthDataSaga);
 }

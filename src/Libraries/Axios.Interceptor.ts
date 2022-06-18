@@ -5,7 +5,7 @@ const onRequest = (config: AxiosRequestConfig): AxiosRequestConfig => {
   const authToken = localStorage.getItem(TOKEN_KEY);
   config.baseURL = `${API_ENDPOINT}`;
   config.headers = {
-    'Content-Type': 'application/xml',
+    'Content-Type': 'application/json',
     openapikey: API_KEY || '',
     Authorization: `Bearer ${authToken || ''}`
   };

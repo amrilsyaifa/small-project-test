@@ -1,5 +1,39 @@
 @import 'src/Reusables/Styles/Variables';
 
+.layout-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+}
+
+.page-header-container {
+  background-color: $white;
+  margin-bottom: 20px;
+}
+
+.page-header {
+  padding-right: 40px;
+  padding-left: 40px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .page-header {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .page-header {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .page-header {
+    width: 1170px;
+  }
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;

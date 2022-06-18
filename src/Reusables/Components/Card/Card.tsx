@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card as CardAntd, Tooltip } from 'antd';
+import { Card as CardAntd, Tooltip, Button } from 'antd';
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import Styles from './Card.module.scss';
 
@@ -22,12 +22,14 @@ interface ITitleComponent {
 const ExtraComponent: React.FC<IExtraComponent> = ({ onEdit, onDelete }) => {
   return (
     <div className={Styles['wrapper-header-action']}>
-      <div onClick={onEdit} className={Styles['edit-icon']} data-testid="edit-btn">
+      <Button onClick={onEdit} className={Styles['edit-icon']} data-testid="edit-btn">
         <EditOutlined />
-      </div>
-      <div onClick={onDelete} className={Styles['remove-icon']} data-testid="remove-btn">
+        <div>Edit</div>
+      </Button>
+      <Button danger onClick={onDelete} className={Styles['remove-icon']} data-testid="remove-btn">
         <DeleteOutlined />
-      </div>
+        <div>Delete</div>
+      </Button>
     </div>
   );
 };
@@ -46,9 +48,11 @@ const Card: React.FC<ICard> = ({ title, body, onEdit, onDelete }) => {
       <CardAntd
         className={Styles['card']}
         title={<TitleComponent title={title} />}
-        extra={<ExtraComponent onEdit={onEdit} onDelete={onDelete} />}
         style={{ width: 300 }}>
         <div>{body}</div>
+        <div className={Styles['wrapper-button']}>
+          <ExtraComponent onEdit={onEdit} onDelete={onDelete} />
+        </div>
       </CardAntd>
     </div>
   );

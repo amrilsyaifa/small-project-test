@@ -9,6 +9,44 @@ exports[`Layout Layout Render Snapshoot 1`] = `
       class="ant-layout"
     >
       <div
+        class="page-header-container"
+      >
+        <div
+          class="page-header"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="header-wrapper"
+            >
+              <img
+                alt="logo"
+                src="/logo512.png"
+              />
+            </div>
+            <div
+              class="wrapper-right-text"
+            >
+              <div
+                class="wrapper-text"
+              >
+                <span
+                  class="ant-typography text"
+                >
+                  Login
+                </span>
+                <span
+                  class="ant-typography text"
+                >
+                  Logout
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
         class="container"
       >
         <main

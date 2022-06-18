@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render expect snapshoot 1`] = `
+<div>
+  <div
+    class="layout-content"
+  >
+    <section
+      class="ant-layout"
+    >
+      <div
+        class="container"
+      >
+        <main
+          class="ant-layout-content"
+          style="padding: 0px 50px;"
+        >
+          <div
+            class="site-layout-content"
+          >
+            <div>
+              Home
+            </div>
+          </div>
+        </main>
+      </div>
+    </section>
+  </div>
+</div>
+`;

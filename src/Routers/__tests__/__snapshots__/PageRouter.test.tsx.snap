@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageRouter should NOT render if not in correct url children level 1`] = `<div />`;
+
+exports[`PageRouter should NOT render if not in correct url root level 1`] = `<div />`;
+
+exports[`PageRouter should render if in correct url children level 1`] = `
+<div>
+  <div
+    data-props="{\\"base\\":\\"/root/correct/anything\\"}"
+    data-testid="AppRouter"
+  >
+    This should display
+  </div>
+</div>
+`;
+
+exports[`PageRouter should render if in correct url root level 1`] = `
+<div>
+  <div
+    data-props="{\\"base\\":\\"root/correct\\"}"
+    data-testid="AppRouter"
+  >
+    This should display
+  </div>
+</div>
+`;

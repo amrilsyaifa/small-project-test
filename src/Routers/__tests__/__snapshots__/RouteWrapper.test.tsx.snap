@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RouteWrapper should render NOT render on the wrong url 1`] = `<div />`;
+
+exports[`RouteWrapper should render NOT render on the wrong url parent 1`] = `<div />`;
+
+exports[`RouteWrapper should render children on the children url 1`] = `
+<div>
+  <div>
+    This should display
+  </div>
+</div>
+`;
+
+exports[`RouteWrapper should render children on the right url 1`] = `
+<div>
+  <div>
+    This should display
+  </div>
+</div>
+`;

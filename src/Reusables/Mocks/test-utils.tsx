@@ -2,7 +2,7 @@ import React from 'react';
 import { render as rtlRender } from '@testing-library/react';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import { persistedReducer } from 'src/Store';
+import { persistedReducer, middleware } from 'src/Store';
 // Import your own reducer
 
 interface IWrapper {
@@ -11,7 +11,13 @@ interface IWrapper {
 
 const render = (
   ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>,
-  { store = configureStore({ reducer: persistedReducer }), ...renderOptions } = {}
+  {
+    store = configureStore({
+      reducer: persistedReducer,
+      middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(middleware)
+    }),
+    ...renderOptions
+  } = {}
 ) => {
   const Wrapper: React.FC<IWrapper> = ({ children }) => {
     return <Provider store={store}>{children}</Provider>;

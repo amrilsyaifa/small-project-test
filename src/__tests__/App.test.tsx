@@ -1,4 +1,4 @@
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup } from 'src/Reusables/Mocks/test-utils';
 import React from 'react';
 import { MatchMediaObject } from 'src/Reusables/Mocks/MatchMediaObjectTest';
 import App from '../App';

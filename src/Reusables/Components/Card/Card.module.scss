@@ -1,0 +1,30 @@
+@import 'src/Reusables/Styles/Variables';
+
+.wrapper-header-action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 70px;
+  justify-content: space-around;
+  .edit-icon {
+    font-size: 22px;
+    cursor: pointer;
+    color: $blue;
+  }
+  .remove-icon {
+    font-size: 22px;
+    cursor: pointer;
+    color: $red;
+  }
+}
+
+.container {
+  .card {
+    :global {
+      .ant-card-head-title {
+        text-transform: capitalize;
+        cursor: default;
+      }
+    }
+  }
+}

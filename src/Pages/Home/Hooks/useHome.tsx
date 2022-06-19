@@ -18,6 +18,7 @@ const useHome = () => {
     dispatch({ type: homeActionsSaga.FETCH_DATA_HOME });
   };
   const onDeletePress = (data: IHome) => {
+    dispatch(onChangeFormData(data));
     Modal.warning({
       title: <Title level={4}>Apakah anda yakin untuk hapus data {data.title} ini?</Title>,
       onOk() {
@@ -31,7 +32,7 @@ const useHome = () => {
   };
 
   const onDelete = () => {
-    console.log();
+    dispatch({ type: homeActionsSaga.DELETE_DATA_HOME });
   };
 
   const onAddData = () => {

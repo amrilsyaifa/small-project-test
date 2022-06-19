@@ -1,24 +1,35 @@
 import React, { useEffect } from 'react';
-import { List } from 'antd';
+import { Button, List } from 'antd';
 import Card from 'src/Reusables/Components/Card';
-import { useAppDispatch, useAppSelector } from 'src/Hooks/useReduxHooks';
-import { homeActionsSaga } from 'src/Reusables/Actions/SagaActions';
+import { useAppSelector } from 'src/Hooks/useReduxHooks';
 import { IHome } from 'src/Store/Reducers/Home.Reducer';
 import Loading from 'src/Reusables/Components/Loading';
+import { PlusOutlined } from '@ant-design/icons';
+import Styles from './Home.module.scss';
+import FormModalHome from './components/FormModal.Home';
+
+import useHome from './Hooks/useHome';
 
 const Home = () => {
-  const dispatch = useAppDispatch();
+  const { onFetchData, onDeletePress, onAddData, onEditData } = useHome();
   const { data, isLoading } = useAppSelector((state) => state.home);
 
   useEffect(() => {
     onFetchData();
   }, []);
 
-  const onFetchData = () => {
-    dispatch({ type: homeActionsSaga.FETCH_DATA_HOME });
-  };
   return (
-    <div>
+    <div className={Styles['container']}>
+      <div className={Styles['container-button']}>
+        <Button
+          type="primary"
+          shape="round"
+          icon={<PlusOutlined />}
+          size="large"
+          onClick={onAddData}>
+          Tambah Data
+        </Button>
+      </div>
       {isLoading ? (
         <Loading />
       ) : (
@@ -36,8 +47,8 @@ const Home = () => {
           renderItem={(item: IHome) => (
             <List.Item>
               <Card
-                onDelete={() => console.log()}
-                onEdit={() => console.log()}
+                onDelete={() => onDeletePress(item)}
+                onEdit={() => onEditData(item)}
                 title={item.title}
                 body={item.body}
               />
@@ -45,6 +56,12 @@ const Home = () => {
           )}
         />
       )}
+
+      <FormModalHome
+        isVisible={false}
+        onFinish={() => console.log()}
+        onCancel={() => console.log()}
+      />
     </div>
   );
 };

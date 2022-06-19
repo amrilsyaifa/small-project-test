@@ -1,0 +1,15 @@
+.wrap {
+  height: 200px !important;
+  width: 100px;
+  background-color: rebeccapurple;
+  :global {
+    .ant-col ant-form-item-label {
+      width: 200px;
+      background-color: rebeccapurple;
+    }
+  }
+  .btn-container {
+    width: 500px;
+    background-color: rebeccapurple;
+  }
+}

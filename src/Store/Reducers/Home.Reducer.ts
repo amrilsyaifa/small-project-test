@@ -11,11 +11,18 @@ export interface IHome {
 interface IState {
   data: IHome[];
   isLoading: boolean;
+  formData: IHome;
 }
 
 const initialState: IState = {
   data: [],
-  isLoading: false
+  isLoading: false,
+  formData: {
+    userId: 0,
+    id: 0,
+    title: '',
+    body: ''
+  }
 };
 
 export const homeSlice = createSlice({

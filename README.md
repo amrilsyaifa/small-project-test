@@ -4,7 +4,14 @@ Thanks for taking the time to contribute !
 
 ## Setup
 
-Install the dependencies
+- Clone this project
+- Create .env.local
+
+```shell
+REACT_APP_API_ENDPOINT=https://jsonplaceholder.typicode.com
+```
+
+- Install the dependencies
 
 ```shell
 yarn

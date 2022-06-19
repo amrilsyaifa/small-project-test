@@ -2,11 +2,18 @@ import React from 'react';
 import { Modal } from 'antd';
 import { useAppDispatch } from 'src/Hooks/useReduxHooks';
 import { homeActionsSaga } from 'src/Reusables/Actions/SagaActions';
-import { IHome } from 'src/Store/Reducers/Home.Reducer';
+import {
+  clearFormData,
+  IHome,
+  onChangeFormData,
+  setIsIsEdit,
+  setIsModalVisible
+} from 'src/Store/Reducers/Home.Reducer';
 import Title from 'antd/lib/typography/Title';
 
 const useHome = () => {
   const dispatch = useAppDispatch();
+
   const onFetchData = () => {
     dispatch({ type: homeActionsSaga.FETCH_DATA_HOME });
   };
@@ -28,18 +35,38 @@ const useHome = () => {
   };
 
   const onAddData = () => {
-    console.log();
+    dispatch(clearFormData());
+    dispatch(setIsIsEdit(false));
+    dispatch(setIsModalVisible(true));
+  };
+
+  const onCancel = () => {
+    dispatch(clearFormData());
+    dispatch(setIsModalVisible(false));
   };
 
   const onEditData = (item: IHome) => {
-    console.log(item);
+    dispatch(onChangeFormData(item));
+    dispatch(setIsIsEdit(true));
+    dispatch(setIsModalVisible(true));
+  };
+
+  const onChange = (item: IHome) => {
+    dispatch(onChangeFormData(item));
+  };
+
+  const onSubmit = () => {
+    dispatch({ type: homeActionsSaga.CREATE_DATA_HOME });
   };
 
   return {
     onFetchData,
     onDeletePress,
     onAddData,
-    onEditData
+    onEditData,
+    onCancel,
+    onChange,
+    onSubmit
   };
 };
 

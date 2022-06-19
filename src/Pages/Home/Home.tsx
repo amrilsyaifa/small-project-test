@@ -11,7 +11,7 @@ import FormModalHome from './components/FormModal.Home';
 import useHome from './Hooks/useHome';
 
 const Home = () => {
-  const { onFetchData, onDeletePress, onAddData, onEditData } = useHome();
+  const { onFetchData, onDeletePress, onAddData, onEditData, onCancel, onSubmit } = useHome();
   const { data, isLoading } = useAppSelector((state) => state.home);
 
   useEffect(() => {
@@ -57,11 +57,7 @@ const Home = () => {
         />
       )}
 
-      <FormModalHome
-        isVisible={false}
-        onFinish={() => console.log()}
-        onCancel={() => console.log()}
-      />
+      <FormModalHome onFinish={onSubmit} onCancel={onCancel} />
     </div>
   );
 };

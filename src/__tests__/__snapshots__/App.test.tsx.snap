@@ -127,6 +127,7 @@ exports[`App should render expect snapshoot 1`] = `
                   </div>
                 </div>
               </div>
+              <div />
             </div>
           </div>
         </main>

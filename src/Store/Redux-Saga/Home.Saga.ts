@@ -1,6 +1,15 @@
-import { call, takeEvery, put } from 'redux-saga/effects';
+import { call, takeEvery, put, select } from 'redux-saga/effects';
 import Api from 'src/Reusables/Services/Api.Services';
-import { fetchData, setIsLoading } from '../Reducers/Home.Reducer';
+import { notification } from 'antd';
+import {
+  addData,
+  clearFormData,
+  fetchData,
+  selectHome,
+  setIsLoading,
+  setIsLoadingForm,
+  setIsModalVisible
+} from '../Reducers/Home.Reducer';
 import { homeActionsSaga, fetchFailedSaga } from 'src/Reusables/Actions/SagaActions';
 import { IHome } from '../Reducers/Home.Reducer';
 
@@ -18,6 +27,28 @@ export function* fetchHomeDataSaga() {
   }
 }
 
+export function* createHomeDataSaga() {
+  try {
+    yield put(setIsLoadingForm(true));
+    const data = yield select(selectHome);
+    const response = yield call(() => Api.post('/posts', data.formData));
+    yield call(() =>
+      notification.open({
+        message: 'Success',
+        description: 'Success Create Data'
+      })
+    );
+    yield put(addData(response.data as IHome));
+    yield put(setIsLoadingForm(false));
+    yield put(clearFormData());
+    yield put(setIsModalVisible(false));
+  } catch (e) {
+    yield put(setIsLoadingForm(false));
+    yield put({ type: fetchFailedSaga.FETCH_FAILED });
+  }
+}
+
 export default function* authSaga() {
   yield takeEvery(homeActionsSaga.FETCH_DATA_HOME, fetchHomeDataSaga);
+  yield takeEvery(homeActionsSaga.CREATE_DATA_HOME, createHomeDataSaga);
 }

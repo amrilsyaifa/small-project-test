@@ -55,7 +55,11 @@ const useHome = () => {
     dispatch(onChangeFormData(item));
   };
 
-  const onSubmit = () => {
+  const onSubmit = (isEdit: boolean) => {
+    if (isEdit) {
+      dispatch({ type: homeActionsSaga.EDIT_DATA_HOME });
+      return;
+    }
     dispatch({ type: homeActionsSaga.CREATE_DATA_HOME });
   };
 

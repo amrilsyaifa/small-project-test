@@ -57,7 +57,7 @@ const Home = () => {
         />
       )}
 
-      <FormModalHome onFinish={onSubmit} onCancel={onCancel} />
+      <FormModalHome onFinish={(e) => onSubmit(e)} onCancel={onCancel} />
     </div>
   );
 };

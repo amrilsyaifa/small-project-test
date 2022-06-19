@@ -48,7 +48,36 @@ export function* createHomeDataSaga() {
   }
 }
 
+export function* editHomeDataSaga() {
+  try {
+    yield put(setIsLoadingForm(true));
+    const data = yield select(selectHome);
+    const response = yield call(() => Api.put(`/posts/${data.formData.id}`, data.formData));
+    yield call(() =>
+      notification.open({
+        message: 'Success',
+        description: 'Success Update Data'
+      })
+    );
+    const copyData = [...data.data].map((item) => {
+      if (item.id === response.data.id) {
+        return response.data;
+      }
+      return item;
+    });
+    console.log('isi response ', copyData);
+    yield put(fetchData(copyData as IHome[]));
+    yield put(setIsLoadingForm(false));
+    yield put(clearFormData());
+    yield put(setIsModalVisible(false));
+  } catch (e) {
+    yield put(setIsLoadingForm(false));
+    yield put({ type: fetchFailedSaga.FETCH_FAILED });
+  }
+}
+
 export default function* authSaga() {
   yield takeEvery(homeActionsSaga.FETCH_DATA_HOME, fetchHomeDataSaga);
   yield takeEvery(homeActionsSaga.CREATE_DATA_HOME, createHomeDataSaga);
+  yield takeEvery(homeActionsSaga.EDIT_DATA_HOME, editHomeDataSaga);
 }

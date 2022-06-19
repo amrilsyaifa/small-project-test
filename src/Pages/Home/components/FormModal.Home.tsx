@@ -7,7 +7,7 @@ import useHome from '../Hooks/useHome';
 const { TextArea } = Input;
 
 interface IFormModalHome {
-  onFinish: () => void;
+  onFinish: (e: boolean) => void;
   onCancel: () => void;
 }
 
@@ -40,14 +40,14 @@ const FormModalHome: React.FC<IFormModalHome> = ({ onFinish, onCancel }) => {
           onCancel={onCancel}>
           <Form
             name="basic"
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
+            onFinish={() => onFinish(isEdit)}
             autoComplete="off"
             labelCol={{ span: 4 }}
             wrapperCol={{ span: 20 }}>
             <Form.Item
               label="Title"
               name="title"
+              initialValue={formData.title}
               rules={[{ required: true, message: 'Please input your title!' }]}>
               <Input
                 value={formData.title}
@@ -59,6 +59,7 @@ const FormModalHome: React.FC<IFormModalHome> = ({ onFinish, onCancel }) => {
             <Form.Item
               label="Body"
               name="body"
+              initialValue={formData.body}
               rules={[{ required: true, message: 'Please input your body!' }]}>
               <TextArea
                 value={formData.body}

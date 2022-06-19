@@ -4,7 +4,8 @@ export const authActionsSaga = {
 
 export const homeActionsSaga = {
   FETCH_DATA_HOME: 'FETCH_DATA_HOME',
-  CREATE_DATA_HOME: 'CREATE_DATA_HOME'
+  CREATE_DATA_HOME: 'CREATE_DATA_HOME',
+  EDIT_DATA_HOME: 'EDIT_DATA_HOME'
 };
 
 export const fetchFailedSaga = {
